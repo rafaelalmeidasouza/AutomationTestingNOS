@@ -39,7 +39,6 @@ The following libraries are used in this project:
 
     ```bash
     git clone https://github.com/rafaelalmeidasouza/AutomationTestingNOS.git
-    cd AutomationTestingNOS
     ```
 
 3. **Install the required packages:**
