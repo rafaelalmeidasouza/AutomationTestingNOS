@@ -35,3 +35,16 @@ jobs:
         with:
           name: test-results
           path: output.xml
+
+  load_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install JMeter
+        run: sudo apt-get update && sudo apt-get install jmeter
+
+      - name: Run JMeter Load Test
+        run: jmeter -n -t jmeter_tests/load_test_plan.jmx -l jmeter_tests/results.jtl
