@@ -1,0 +1,4 @@
+ADD_USER_ENDPOINT: /public/v2/users
+DELETE_USER_ENDPOINT: /public/v2/users/
+GET_USER_ENDPOINT: /public/v2/users/
+UPDATE_USER_ENDPOINT: /public/v2/users/

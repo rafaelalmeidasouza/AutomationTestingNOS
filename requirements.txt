@@ -1,0 +1,4 @@
+robotframework
+PyYAML
+robotframework-jsonlibrary
+robotframework-requests
