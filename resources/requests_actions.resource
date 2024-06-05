@@ -6,6 +6,8 @@ Resource            ../config/package.resource
 
 *** Keywords ***
 I Create API Session
+    [Documentation]    Create Session for Method Execution
+
     ${header}    I Create Header
 
     Create Session
@@ -15,13 +17,16 @@ I Create API Session
     ...    disable_warnings=True
 
 I Create Header
+    [Documentation]    Create Header For Session Creation
+
     ${header}    Create Dictionary
-    ...    Authorization=Bearer 58ce1a142761c6c72d668b92645e6d7da80c0731b73f9357ffb4a3f27481770b
+    ...    Authorization=Bearer 91aff8c686f717d44b834041d69f273b3b168888e0e5025706e3e8982151fc0f
     ...    Content-Type=application/json
 
     RETURN    ${header}
 
 I Post On Session
+    [Documentation]    Execute the POST method on the created session
     [Arguments]    ${URL}    ${EXPECTED_STATUS}    ${JSON}=None
 
     I Create API Session
@@ -35,6 +40,7 @@ I Post On Session
     RETURN    ${res.json()}
 
 I Delete On Session
+    [Documentation]    Execute the DELETE method on the created session
     [Arguments]    ${URL}    ${EXPECTED_STATUS}
 
     I Create API Session
@@ -47,6 +53,7 @@ I Delete On Session
     RETURN    ${res}
 
 I Get On Session
+    [Documentation]    Execute the GET method on the created session
     [Arguments]    ${URL}    ${EXPECTED_STATUS}
 
     I Create API Session
@@ -59,6 +66,7 @@ I Get On Session
     RETURN    ${res.json()}
 
 I Put On Session
+    [Documentation]    Execute the PUT method on the created session
     [Arguments]    ${URL}    ${EXPECTED_STATUS}    ${JSON}=None
 
     I Create API Session
@@ -72,4 +80,5 @@ I Put On Session
     RETURN    ${res.json()}
 
 I Clear Data Base
+    [Documentation]    Remove Created Users
     Execute The User Removal API

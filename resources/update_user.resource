@@ -12,6 +12,8 @@ ${ID_NEW_USER}          ${EMPTY}
 
 *** Keywords ***
 I Have The Data To Update A User
+    [Documentation]    Create User Update Body
+
     [Arguments]    ${NAME}    ${GENDER}    ${EMAIL}
 
     ${UPDATE_BODY}    Create Dictionary
@@ -23,6 +25,8 @@ I Have The Data To Update A User
     Set Test Variable    ${UPDATE_BODY}
 
 I Execute The User Update API
+    [Documentation]    Run The User Update API
+
     [Arguments]    ${NAME}    ${GENDER}    ${EMAIL}
 
     I Have The Data To Update A User    ${NAME}    ${GENDER}    ${EMAIL}
@@ -36,6 +40,8 @@ I Execute The User Update API
     Set Test Variable    ${RES_UPDATE_USER}
 
 The Response Should Contain The Details Of The Updated User
+    [Documentation]    Validate Details For Updated User
+
     Dictionary Should Contain Key    ${RES_UPDATE_USER}    id
     Dictionary Should Contain Key    ${RES_UPDATE_USER}    status
 

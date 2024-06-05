@@ -10,7 +10,7 @@ Test Teardown       I Clear Data Base
 Scenario: Update Created User Successfully
     [Documentation]    User Insertion Validation Scenarios
 
-    Given That There Is A Registered User
+    Given That There Is A Created User
     ...    NAME=name test
     ...    GENDER=male
     ...    EMAIL=test@tests.com

@@ -8,7 +8,7 @@ Resource            ../config/package.resource
 Scenario: Remove User Successfully
     [Documentation]    Validation Scenarios for User Removal
 
-    Given That There Is A Registered User
+    Given That There Is A Created User
     ...    NAME=name test deleted
     ...    GENDER=male
     ...    EMAIL=testdeleted@tests.com

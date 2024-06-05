@@ -11,6 +11,7 @@ ${RES_ADD_NEW_USER}     ${EMPTY}
 
 *** Keywords ***
 I Have The Data To Create A New User
+    [Documentation]    Generate User Create Body
     [Arguments]    ${NAME}    ${GENDER}    ${EMAIL}
 
     ${ADD_NEW_USER_BODY}    Create Dictionary
@@ -22,6 +23,8 @@ I Have The Data To Create A New User
     Set Test Variable    ${ADD_NEW_USER_BODY}
 
 I Execute The User Creation API
+    [Documentation]    Run The User Create API
+
     ${RES_ADD_NEW_USER}    I Post On Session
     ...    URL= ${ADD_USER_ENDPOINT}
     ...    EXPECTED_STATUS=201
@@ -33,6 +36,8 @@ I Execute The User Creation API
     Log To Console    ${\n}Usuário Criado: ${ID_NEW_USER}
 
 The Response Should Contain The Details Of The Created User
+    [Documentation]    Validate Details For Created User
+
     Dictionary Should Contain Key    ${RES_ADD_NEW_USER}    id
     Dictionary Should Contain Key    ${RES_ADD_NEW_USER}    status
 
@@ -47,10 +52,14 @@ The Response Should Contain The Details Of The Created User
     Log To Console    ${\n}Dados Validados
 
 I Execute The User Creation API 2x
+    [Documentation]    Run The User Create API 2x
+
     I Execute The User Creation API
     I Execute The User Creation API Duplicated
 
 I Execute The User Creation API Duplicated
+    [Documentation]    Run API to Create User with Existing Data
+
     ${RES_ADD_NEW_USER}    I Post On Session
     ...    URL= ${ADD_USER_ENDPOINT}
     ...    EXPECTED_STATUS=422
@@ -59,13 +68,16 @@ I Execute The User Creation API Duplicated
     Set Test Variable    ${RES_ADD_NEW_USER}
 
 The Response Should Contain An Error Message Indicating That The Email Is Already In Use
+    [Documentation]    Validate Error Message when Creating User with Existing Data
+
     ${expected_message}    Set Variable    has already been taken
 
     Should Be Equal As Strings    ${RES_ADD_NEW_USER[0]['message']}    ${expected_message}
 
     Log To Console    ${\n}Não Foi Possível Criar Novo User Com Os Nesmos Dados
 
-That There Is A Registered User
+That There Is A Created User
+    [Documentation]    Create User as Test Precondition
     [Arguments]    ${NAME}    ${GENDER}    ${EMAIL}
 
     I Have The Data To Create A New User    NAME=${NAME}    GENDER=${GENDER}    EMAIL=${EMAIL}
