@@ -49,8 +49,6 @@ The Response Should Contain The Details Of The Created User
     Should Be Equal As Strings    ${actual_gender}    ${ADD_NEW_USER_BODY}[gender]
     Should Be Equal As Strings    ${actual_email}    ${ADD_NEW_USER_BODY}[email]
 
-    Log To Console    ${\n}Dados Validados
-
 I Execute The User Creation API 2x
     [Documentation]    Run The User Create API 2x
 

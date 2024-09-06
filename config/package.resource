@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation       Arquivo de Mapeamento
 
-Library             String
 Library             Collections
 Library             OperatingSystem
+Library             String
 Library             JSONLibrary
 Library             RequestsLibrary
 Library             yaml
